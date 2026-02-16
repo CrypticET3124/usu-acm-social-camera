@@ -27,21 +27,23 @@ export default function StickerView({
   const x = useSharedValue(t.x);
   const y = useSharedValue(t.y);
   const scale = useSharedValue(t.scale);
+  const rotation = useSharedValue(t.rotation);
 
   const startX = useSharedValue(t.x);
   const startY = useSharedValue(t.y);
   const startScale = useSharedValue(t.scale);
-
-  const initialRotation = t.rotation;
+  const startRotation = useSharedValue(t.rotation);
 
   useEffect(() => {
     x.value = t.x;
     y.value = t.y;
     scale.value = t.scale;
+    rotation.value = t.rotation;
 
     startX.value = t.x;
     startY.value = t.y;
     startScale.value = t.scale;
+    startRotation.value = t.rotation;
   }, [t.x, t.y, t.scale, t.rotation]);
 
   const { bringToFront, select, setTransform, commit } = registry.actions;
@@ -53,7 +55,7 @@ export default function StickerView({
         x: x.value,
         y: y.value,
         scale: scale.value,
-        rotation: initialRotation,
+        rotation: rotation.value,
       },
       false,
     );
@@ -78,7 +80,7 @@ export default function StickerView({
     });
 
   const pinch = Gesture.Pinch()
-    .onBegin((e) => {
+    .onBegin(() => {
       scheduleOnRN(bringToFront, stickerId);
       scheduleOnRN(select, stickerId);
 
@@ -91,14 +93,28 @@ export default function StickerView({
       scheduleOnRN(commitToRegistry);
     });
 
-  const gesture = Gesture.Simultaneous(pan, pinch);
+  const rotate = Gesture.Rotation()
+    .onBegin(() => {
+      scheduleOnRN(bringToFront, stickerId);
+      scheduleOnRN(select, stickerId);
+
+      startRotation.value = rotation.value;
+    })
+    .onUpdate((e) => {
+      rotation.value = startRotation.value + e.rotation;
+    })
+    .onEnd(() => {
+      scheduleOnRN(commitToRegistry);
+    });
+
+  const gesture = Gesture.Simultaneous(pan, pinch, rotate);
 
   const style = useAnimatedStyle(() => {
     return {
       transform: [
         { translateX: x.value },
         { translateY: y.value },
-        { rotate: `${initialRotation}rad` },
+        { rotate: `${rotation.value}rad` },
         { scale: scale.value },
       ],
     };
