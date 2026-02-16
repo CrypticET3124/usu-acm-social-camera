@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import type { OverlayPreset } from "./SocialCamera";
 
-export default function Overlay({ preset }: { preset: OverlayPreset }) {
+export function Overlay({ preset }: { preset: OverlayPreset }) {
   return (
     <View pointerEvents="none" style={styles.overlay}>
       <Text style={styles.brand}>USU ACM</Text>

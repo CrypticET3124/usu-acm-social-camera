@@ -1,14 +1,9 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import SocialCamera, { type OverlayPreset } from "./components/SocialCamera";
-import Overlay from "./components/Overlay";
+import { SocialCamera } from "./components/SocialCamera";
+import { Overlay } from "./components/Overlay";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
-const PRESETS: OverlayPreset[] = [
-  { emoji: "🔥", caption: "My first social app", handle: "@usu_acm" },
-  { emoji: "😂", caption: "Built this in 1 hour", handle: "@spencerls_" },
-  { emoji: "😎", caption: "Camera + overlays = instant W", handle: "@you" },
-];
+import { PRESETS } from "./presets";
 
 export default function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);

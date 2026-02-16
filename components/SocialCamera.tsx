@@ -31,7 +31,7 @@ export type OverlayPreset = {
 
 type Mode = "camera" | "preview";
 
-export default function SocialCamera({
+export function SocialCamera({
   presets,
   OverlayComponent,
   onFinish,
