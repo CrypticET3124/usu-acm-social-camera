@@ -15,9 +15,11 @@ import { CameraCapturedPicture, CameraView } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
 import useCameraReady from "./useCameraReady";
 import { LinearGradient } from "expo-linear-gradient";
-import { useStickerRegistry } from "./stickers/registry";
-import StickerLayer from "./stickers/layer";
-import { STICKERS } from "./stickers/pack";
+import {
+  StickerLayer,
+  useStickerRegistry,
+  DEFAULT_STICKER_PACK,
+} from "./stickers/";
 
 export type OverlayPreset = {
   emoji: string;
@@ -184,7 +186,10 @@ export default function SocialCamera({
               source={{ uri: image.uri }}
               style={StyleSheet.absoluteFillObject}
             />
-            <StickerLayer pack={STICKERS} registry={stickerRegistry} />
+            <StickerLayer
+              pack={DEFAULT_STICKER_PACK}
+              registry={stickerRegistry}
+            />
             <OverlayComponent preset={preset} />
           </View>
           <LinearGradient

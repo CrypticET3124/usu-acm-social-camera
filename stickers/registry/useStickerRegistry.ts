@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useMemo, useReducer, useRef } from "react";
+import { useCallback, useMemo, useReducer } from "react";
 import { initialState, reducer } from "./internal";
-import { PackId, StickerId, StickerInstance, StickerTransform } from "../types";
+import { PackId, StickerId, StickerTransform } from "../types";
 
 export function useStickerRegistry() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -32,9 +32,6 @@ export function useStickerRegistry() {
       ) {
         dispatch({ type: "UPDATE", id, patch, commit });
       },
-      // updateLive(id: StickerId, patch: Partial<StickerTransform>) {
-      //   dispatch({ type: "UPDATE", id, patch, commit: false });
-      // },
       commit() {
         dispatch({ type: "COMMIT" });
       },

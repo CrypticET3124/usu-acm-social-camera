@@ -1,9 +1,11 @@
 import { View, StyleSheet } from "react-native";
-import { StickerRegistry } from "./registry";
-import { StickerPack } from "./types";
-import StickerView from "./view";
+import { useState } from "react";
+import { StickerRegistry } from "../registry";
+import { StickerPack } from "../types";
+import StickerView from "../components/StickerView";
+import { TrashZone } from "./TrashZone";
 
-export default function StickerLayer({
+export function StickerLayer({
   pack,
   registry,
 }: {
@@ -11,6 +13,7 @@ export default function StickerLayer({
   registry: StickerRegistry;
 }) {
   const stickers = registry.getOrderedStickers();
+  const [dragging, setDragging] = useState(false);
 
   return (
     <View style={{ ...StyleSheet.absoluteFillObject }} pointerEvents="box-none">
@@ -20,8 +23,10 @@ export default function StickerLayer({
           stickerId={s.id}
           pack={pack}
           registry={registry}
+          onDraggingChange={setDragging}
         />
       ))}
+      <TrashZone visible={dragging} />
     </View>
   );
 }
