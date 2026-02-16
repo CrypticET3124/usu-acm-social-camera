@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import SocialCamera, { type OverlayPreset } from "./SocialCamera";
-import Overlay from "./Overlay";
+import SocialCamera, { type OverlayPreset } from "./components/SocialCamera";
+import Overlay from "./components/Overlay";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const PRESETS: OverlayPreset[] = [

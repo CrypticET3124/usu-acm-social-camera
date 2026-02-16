@@ -13,13 +13,15 @@ import { captureRef } from "react-native-view-shot";
 import * as Sharing from "expo-sharing";
 import { CameraCapturedPicture, CameraView } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
-import useCameraReady from "./useCameraReady";
+import useCameraReady from "../hooks/useCameraReady";
 import { LinearGradient } from "expo-linear-gradient";
 import {
   StickerLayer,
   useStickerRegistry,
   DEFAULT_STICKER_PACK,
-} from "./stickers/";
+} from "../stickers/";
+import type { StickerPack } from "../stickers";
+import StickerPicker from "./StickerPicker";
 
 export type OverlayPreset = {
   emoji: string;
@@ -44,6 +46,7 @@ export default function SocialCamera({
   const [image, setImage] = useState<CameraCapturedPicture | null>(null);
   const [presetIndex, setPresetIndex] = useState(0);
   const stickerRegistry = useStickerRegistry();
+  const [pickerOpen, setPickerOpen] = useState(false);
 
   const [isExporting, setIsExporting] = useState(false);
 
@@ -65,6 +68,13 @@ export default function SocialCamera({
     if (!pic?.uri) return;
     setImage(pic);
     setMode("preview");
+  };
+
+  const toggleStickerPicker = () => setPickerOpen((v) => !v);
+  const closeStickerPicker = () => setPickerOpen(false);
+  const addSticker = (packId: keyof StickerPack) => {
+    stickerRegistry.actions.add(packId);
+    closeStickerPicker();
   };
 
   const retake = () => {
@@ -192,6 +202,7 @@ export default function SocialCamera({
             />
             <OverlayComponent preset={preset} />
           </View>
+
           <LinearGradient
             pointerEvents="none"
             colors={["transparent", "rgba(0,0,0,0.7)"]}
@@ -209,7 +220,6 @@ export default function SocialCamera({
             </TouchableOpacity>
           </View> */}
 
-          {/* Bottom row mirrors camera mode (shutter replaced by actions) */}
           <View style={styles.previewBottomRow}>
             <TouchableOpacity
               onPress={retake}
@@ -231,7 +241,7 @@ export default function SocialCamera({
             </TouchableOpacity>
 
             <TouchableOpacity
-              onPress={() => stickerRegistry.actions.add("usuAcm")}
+              onPress={toggleStickerPicker}
               hitSlop={10}
               disabled={isExporting}
               accessibilityLabel="Add sticker"
@@ -253,6 +263,13 @@ export default function SocialCamera({
               />
             </TouchableOpacity>
           </View>
+
+          <StickerPicker
+            visible={pickerOpen}
+            pack={DEFAULT_STICKER_PACK}
+            onClose={closeStickerPicker}
+            onSelect={addSticker}
+          />
         </>
       )}
 
