@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import SocialCamera, { type OverlayPreset } from "./SocialCamera";
 import Overlay from "./Overlay";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const PRESETS: OverlayPreset[] = [
   { emoji: "🔥", caption: "My first social app", handle: "@usu_acm" },
@@ -13,33 +14,35 @@ export default function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
 
   return (
-    <View style={styles.root}>
-      {!isCameraOpen ? (
-        <View style={styles.home}>
-          <Text style={styles.title}>USU ACM Social Camera</Text>
-          <Text style={styles.subtitle}>
-            Take a photo, add an overlay, then share it.
-          </Text>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.root}>
+        {!isCameraOpen ? (
+          <View style={styles.home}>
+            <Text style={styles.title}>USU ACM Social Camera</Text>
+            <Text style={styles.subtitle}>
+              Take a photo, add an overlay, then share it.
+            </Text>
 
-          <TouchableOpacity
-            style={styles.homeBtn}
-            onPress={() => setIsCameraOpen(true)}
-          >
-            <Text style={styles.homeBtnText}>Take a picture</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.homeBtn}
+              onPress={() => setIsCameraOpen(true)}
+            >
+              <Text style={styles.homeBtnText}>Take a picture</Text>
+            </TouchableOpacity>
 
-          <Text style={styles.smallHint}>
-            In the workshop you’ll customize presets + the overlay UI.
-          </Text>
-        </View>
-      ) : (
-        <SocialCamera
-          presets={PRESETS}
-          OverlayComponent={Overlay}
-          onFinish={() => setIsCameraOpen(false)}
-        />
-      )}
-    </View>
+            <Text style={styles.smallHint}>
+              In the workshop you’ll customize presets + the overlay UI.
+            </Text>
+          </View>
+        ) : (
+          <SocialCamera
+            presets={PRESETS}
+            OverlayComponent={Overlay}
+            onFinish={() => setIsCameraOpen(false)}
+          />
+        )}
+      </View>
+    </GestureHandlerRootView>
   );
 }
 

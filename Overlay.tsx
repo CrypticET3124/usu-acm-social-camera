@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderRadius: 14,
     backgroundColor: "rgba(0,0,0,0.35)",
-    gap: 4,
   },
   handle: { color: "white", fontWeight: "800", fontSize: 15 },
   emoji: { fontSize: 22 },

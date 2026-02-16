@@ -15,6 +15,9 @@ import { CameraCapturedPicture, CameraView } from "expo-camera";
 import { Ionicons } from "@expo/vector-icons";
 import useCameraReady from "./useCameraReady";
 import { LinearGradient } from "expo-linear-gradient";
+import { useStickerRegistry } from "./stickers/registry";
+import StickerLayer from "./stickers/layer";
+import { STICKERS } from "./stickers/pack";
 
 export type OverlayPreset = {
   emoji: string;
@@ -38,6 +41,8 @@ export default function SocialCamera({
   const [mode, setMode] = useState<Mode>("camera");
   const [image, setImage] = useState<CameraCapturedPicture | null>(null);
   const [presetIndex, setPresetIndex] = useState(0);
+  const stickerRegistry = useStickerRegistry();
+
   const [isExporting, setIsExporting] = useState(false);
 
   const cameraRef = useRef<CameraView>(null);
@@ -179,6 +184,7 @@ export default function SocialCamera({
               source={{ uri: image.uri }}
               style={StyleSheet.absoluteFillObject}
             />
+            <StickerLayer pack={STICKERS} registry={stickerRegistry} />
             <OverlayComponent preset={preset} />
           </View>
           <LinearGradient
@@ -186,6 +192,13 @@ export default function SocialCamera({
             colors={["transparent", "rgba(0,0,0,0.7)"]}
             style={styles.bottomGradient}
           />
+
+          <TouchableOpacity
+            onPress={() => stickerRegistry.actions.add("usuAcm")}
+            hitSlop={10}
+          >
+            <Ionicons name="happy-outline" size={30} color="white" />
+          </TouchableOpacity>
 
           {/* TOP RIGHT: X (no background) */}
           {/* <View style={styles.topRight}>
