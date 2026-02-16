@@ -198,13 +198,6 @@ export default function SocialCamera({
             style={styles.bottomGradient}
           />
 
-          <TouchableOpacity
-            onPress={() => stickerRegistry.actions.add("usuAcm")}
-            hitSlop={10}
-          >
-            <Ionicons name="happy-outline" size={30} color="white" />
-          </TouchableOpacity>
-
           {/* TOP RIGHT: X (no background) */}
           {/* <View style={styles.topRight}>
             <TouchableOpacity
@@ -235,6 +228,15 @@ export default function SocialCamera({
               accessibilityLabel="Change overlay"
             >
               <Ionicons name="color-palette-outline" size={30} color="white" />
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => stickerRegistry.actions.add("usuAcm")}
+              hitSlop={10}
+              disabled={isExporting}
+              accessibilityLabel="Add sticker"
+            >
+              <Ionicons name="happy-outline" size={30} color="white" />
             </TouchableOpacity>
 
             <TouchableOpacity
