@@ -26,18 +26,22 @@ export default function StickerView({
 
   const x = useSharedValue(t.x);
   const y = useSharedValue(t.y);
+  const scale = useSharedValue(t.scale);
+
   const startX = useSharedValue(t.x);
   const startY = useSharedValue(t.y);
+  const startScale = useSharedValue(t.scale);
 
-  const initialScale = t.scale;
   const initialRotation = t.rotation;
 
   useEffect(() => {
     x.value = t.x;
     y.value = t.y;
+    scale.value = t.scale;
 
     startX.value = t.x;
     startY.value = t.y;
+    startScale.value = t.scale;
   }, [t.x, t.y, t.scale, t.rotation]);
 
   const { bringToFront, select, setTransform, commit } = registry.actions;
@@ -48,7 +52,7 @@ export default function StickerView({
       {
         x: x.value,
         y: y.value,
-        scale: initialScale,
+        scale: scale.value,
         rotation: initialRotation,
       },
       false,
@@ -72,7 +76,22 @@ export default function StickerView({
     .onEnd(() => {
       scheduleOnRN(commitToRegistry);
     });
-  const gesture = pan;
+
+  const pinch = Gesture.Pinch()
+    .onBegin((e) => {
+      scheduleOnRN(bringToFront, stickerId);
+      scheduleOnRN(select, stickerId);
+
+      startScale.value = scale.value;
+    })
+    .onUpdate((e) => {
+      scale.value = startScale.value * e.scale;
+    })
+    .onEnd(() => {
+      scheduleOnRN(commitToRegistry);
+    });
+
+  const gesture = Gesture.Simultaneous(pan, pinch);
 
   const style = useAnimatedStyle(() => {
     return {
@@ -80,7 +99,7 @@ export default function StickerView({
         { translateX: x.value },
         { translateY: y.value },
         { rotate: `${initialRotation}rad` },
-        { scale: initialScale },
+        { scale: scale.value },
       ],
     };
   });
