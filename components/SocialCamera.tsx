@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -8,6 +8,8 @@ import {
   View,
   Image,
   Pressable,
+  PanResponder,
+  Text,
 } from "react-native";
 import { captureRef } from "react-native-view-shot";
 import * as Sharing from "expo-sharing";
@@ -49,9 +51,12 @@ export function SocialCamera({
   const [pickerOpen, setPickerOpen] = useState(false);
 
   const [isExporting, setIsExporting] = useState(false);
+  const [facing, setFacing] = useState<"front" | "back">("back");
+  const [showHint, setShowHint] = useState(false);
 
   const cameraRef = useRef<CameraView>(null);
   const snapRef = useRef<View>(null);
+  const hintTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const preset = useMemo(() => {
     if (presets.length === 0)
@@ -64,7 +69,9 @@ export function SocialCamera({
 
   const capturePhoto = async () => {
     if (!cameraRef.current) return;
-    const pic = await cameraRef.current.takePictureAsync();
+    const pic = await cameraRef.current.takePictureAsync(
+      facing === "front" ? { mirror: true } : undefined,
+    );
     if (!pic?.uri) return;
     setImage(pic);
     setMode("preview");
@@ -128,6 +135,47 @@ export function SocialCamera({
     }
   };
 
+  const toggleFacing = useCallback(
+    () => setFacing((current) => (current === "back" ? "front" : "back")),
+    [],
+  );
+
+  const showHintToast = useCallback(() => {
+    setShowHint(true);
+    if (hintTimer.current) clearTimeout(hintTimer.current);
+    hintTimer.current = setTimeout(() => setShowHint(false), 1500);
+  }, []);
+
+  useEffect(
+    () => () => {
+      if (hintTimer.current) clearTimeout(hintTimer.current);
+    },
+    [],
+  );
+
+  const panResponder = useMemo(
+    () =>
+      PanResponder.create({
+        onStartShouldSetPanResponder: () => mode === "camera",
+        onMoveShouldSetPanResponder: (_, gestureState) =>
+          mode === "camera" &&
+          (Math.abs(gestureState.dx) > 10 || Math.abs(gestureState.dy) > 10),
+        onPanResponderRelease: (_, gestureState) => {
+          if (mode !== "camera") return;
+          const { dx, dy } = gestureState;
+          const absDx = Math.abs(dx);
+          const absDy = Math.abs(dy);
+
+          if (absDx > 40 || absDy > 40) {
+            toggleFacing();
+          } else if (absDx < 6 && absDy < 6) {
+            showHintToast();
+          }
+        },
+      }),
+    [mode, toggleFacing, showHintToast],
+  );
+
   if (loading || !ready) {
     return (
       <View style={styles.loading}>
@@ -140,8 +188,22 @@ export function SocialCamera({
     <View style={styles.root}>
       {mode === "camera" && (
         <>
-          <CameraView ref={cameraRef} style={StyleSheet.absoluteFill} />
-          <OverlayComponent preset={preset} />
+          <View style={StyleSheet.absoluteFill} {...panResponder.panHandlers}>
+            <CameraView
+              ref={cameraRef}
+              style={StyleSheet.absoluteFill}
+              facing={facing}
+            />
+            <OverlayComponent preset={preset} />
+          </View>
+
+          {showHint && (
+            <View style={styles.hintContainer} pointerEvents="none">
+              <View style={styles.hintBubble}>
+                <Text style={styles.hintText}>Swipe to flip</Text>
+              </View>
+            </View>
+          )}
           <LinearGradient
             pointerEvents="none"
             colors={["transparent", "rgba(0,0,0,0.2)", "rgba(0,0,0,0.6)"]}
@@ -361,5 +423,26 @@ const styles = StyleSheet.create({
     right: 0,
     bottom: 0,
     height: 250,
+  },
+
+  hintContainer: {
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 140,
+    alignItems: "center",
+  },
+
+  hintBubble: {
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    backgroundColor: "rgba(0,0,0,0.7)",
+    borderRadius: 999,
+  },
+
+  hintText: {
+    color: "white",
+    fontWeight: "600",
+    fontSize: 14,
   },
 });
