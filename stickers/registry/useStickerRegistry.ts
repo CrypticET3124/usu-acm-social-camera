@@ -35,6 +35,9 @@ export function useStickerRegistry() {
       commit() {
         dispatch({ type: "COMMIT" });
       },
+      reset() {
+        dispatch({ type: "RESET" });
+      },
     };
   }, []);
 

@@ -53,4 +53,5 @@ export type Action =
   | { type: "SELECT"; id: StickerId | null }
   | { type: "BRING_TO_FRONT"; id: StickerId }
   | { type: "UNDO" }
-  | { type: "REDO" };
+  | { type: "REDO" }
+  | { type: "RESET" };

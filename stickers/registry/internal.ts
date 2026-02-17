@@ -160,6 +160,10 @@ export function reducer(state: StickerState, action: Action): StickerState {
       };
     }
 
+    case "RESET": {
+      return initialState;
+    }
+
     default:
       return state;
   }

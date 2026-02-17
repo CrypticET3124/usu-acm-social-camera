@@ -65,6 +65,7 @@ export function SocialCamera({
   };
 
   const retake = () => {
+    stickerRegistry.actions.reset();
     setImage(null);
     setMode("camera");
   };
