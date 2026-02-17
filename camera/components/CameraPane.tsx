@@ -43,6 +43,7 @@ export function CameraPane({
           style={StyleSheet.absoluteFill}
           facing={facing}
           animateShutter={false}
+          autofocus="on"
         />
         <OverlayComponent preset={preset} />
       </View>
