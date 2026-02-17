@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { SocialCamera } from "./camera";
-import { BasicOverlay } from "./overlays";
+import {
+  BasicOverlay,
+  BASIC_PRESETS,
+  BASIC_STICKER_PACK,
+} from "./customization";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { PRESETS } from "./presets";
-import { BASIC_STICKER_PACK } from "./sticker-packs";
 
 export default function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
@@ -32,7 +34,7 @@ export default function App() {
           </View>
         ) : (
           <SocialCamera
-            presets={PRESETS}
+            presets={BASIC_PRESETS}
             stickerPack={BASIC_STICKER_PACK}
             OverlayComponent={BasicOverlay}
             onFinish={() => setIsCameraOpen(false)}

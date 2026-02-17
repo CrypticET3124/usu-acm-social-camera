@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import type { OverlayPreset } from "./camera";
+import type { OverlayPreset } from "../camera";
 
 export function BasicOverlay({ preset }: { preset: OverlayPreset }) {
   return (
