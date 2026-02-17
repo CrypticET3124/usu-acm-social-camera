@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Alert, Linking } from "react-native";
 import { useCameraPermissions } from "expo-camera";
 
-export default function useCameraReady(onDenied?: () => void) {
+export function useCameraReady(onDenied?: () => void) {
   const [camPerm, requestCamPerm] = useCameraPermissions();
 
   const [ready, setReady] = useState(false);

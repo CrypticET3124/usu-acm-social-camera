@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
-import type { StickerPack } from "./types";
+import type { StickerPack } from "./stickers";
 
-export const DEFAULT_STICKER_PACK: StickerPack = {
+export const BASIC_STICKER_PACK: StickerPack = {
   flame: ({ size }) => (
     <Text style={[styles.text, { fontSize: size * 0.5 }]}>🔥</Text>
   ),

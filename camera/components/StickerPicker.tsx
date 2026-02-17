@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, View, TouchableOpacity } from "react-native";
-import type { StickerPack } from "../stickers";
+import type { StickerPack } from "../../stickers";
 
 type Props = {
   visible: boolean;
@@ -8,12 +8,7 @@ type Props = {
   onClose: () => void;
 };
 
-export default function StickerPicker({
-  visible,
-  pack,
-  onSelect,
-  onClose,
-}: Props) {
+export function StickerPicker({ visible, pack, onSelect, onClose }: Props) {
   if (!visible) return null;
 
   return (
