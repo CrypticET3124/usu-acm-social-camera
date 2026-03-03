@@ -7,7 +7,7 @@ export function BasicOverlay({ preset }: { preset: OverlayPreset }) {
     <View pointerEvents="none" style={styles.overlay}>
       <View style={styles.topRow}>
         <LinearGradient
-          colors={["rgba(5,5,5,0.9)", "rgba(5,5,5,0.00)"]}
+          colors={["rgba(5,5,5,0.9)", "transparent"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={styles.card}
