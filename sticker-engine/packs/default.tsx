@@ -12,9 +12,7 @@ export const DEFAULT: StickerPack = {
   ),
 
   // Text/Emoji-based sticker examples
-  flame: ({ size }) => (
-    <Text style={{ fontSize: size * 0.5 }}>🔥</Text>
-  ),
+  flame: ({ size }) => <Text style={{ fontSize: size * 0.5 }}>🔥</Text>,
 
   camera: ({ size }) => (
     <Text style={{ fontSize: size * 0.7, textAlign: "center" }}>📸</Text>
