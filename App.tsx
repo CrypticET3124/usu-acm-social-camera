@@ -3,13 +3,11 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Camerlay } from "./camera";
 import {
   Overlay,
-  BASIC_PRESETS,
-  BASIC_STICKER_PACK,
-  CameraThemeProvider,
-  CAMERA_THEMES,
-  useCameraTheme,
+  OVERLAY_PRESETS,
+  STICKER_PACKS,
 } from "./customization";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { ThemeProvider, THEMES, useTheme } from "./theme";
 
 function HomeScreen({
   onOpen,
@@ -18,7 +16,7 @@ function HomeScreen({
   onOpen: () => void;
   onCycleTheme: () => void;
 }) {
-  const theme = useCameraTheme();
+  const theme = useTheme();
 
   return (
     <View
@@ -84,15 +82,15 @@ export default function App() {
   const [isCameraOpen, setIsCameraOpen] = useState(false);
   const [themeIndex, setThemeIndex] = useState(0);
 
-  const currentTheme = CAMERA_THEMES[themeIndex];
+  const currentTheme = THEMES[themeIndex];
 
   const cycleTheme = () => {
-    setThemeIndex((i) => (i + 1) % CAMERA_THEMES.length);
+    setThemeIndex((i) => (i + 1) % THEMES.length);
   };
 
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <CameraThemeProvider value={currentTheme}>
+      <ThemeProvider value={currentTheme}>
         <View style={styles.root}>
           {!isCameraOpen ? (
             <HomeScreen
@@ -101,14 +99,14 @@ export default function App() {
             />
           ) : (
             <Camerlay
-              presets={BASIC_PRESETS}
-              stickerPack={BASIC_STICKER_PACK}
+              presets={OVERLAY_PRESETS}
+              stickerPack={STICKER_PACKS.default}
               OverlayComponent={Overlay}
               onFinish={() => setIsCameraOpen(false)}
             />
           )}
         </View>
-      </CameraThemeProvider>
+      </ThemeProvider>
     </GestureHandlerRootView>
   );
 }

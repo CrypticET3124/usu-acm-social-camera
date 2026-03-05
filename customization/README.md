@@ -8,7 +8,7 @@ This folder is the main place to edit the app during the workshop. All changes h
 |------|--------|
 | **types.ts** | `OverlayPreset` and `OverlayProps` — types for overlay data and overlay component props. |
 | **overlay-presets.ts** | List of overlay presets (emoji, caption, handle, tags). Add or edit entries to change the text options. |
-| **overlays.tsx** | `BasicOverlay` component — the UI drawn on top of the photo (card, handle, caption, tags). Edit or replace to change the overlay design. |
+| **overlay.tsx** | `BasicOverlay` component — the UI drawn on top of the photo (card, handle, caption, tags). Edit or replace to change the overlay design. |
 | **sticker-packs.tsx** | `BASIC_STICKER_PACK` — sticker definitions (emojis, images, or custom components). Add keys and render functions to add stickers. |
 | **themes.ts** | `CAMERA_THEMES` array — named theme objects (colors, brand name). Add new themes or edit existing ones. |
 | **camera-theme.tsx** | `CameraTheme` type, `CameraThemeProvider`, and `useCameraTheme` hook — theme system for overlays and stickers. |

@@ -1,4 +1,4 @@
-import type { CameraTheme } from "./types";
+import type { Theme } from "./types";
 
 /**
  * Available camera themes for the app.
@@ -8,7 +8,7 @@ import type { CameraTheme } from "./types";
  * Themes use semantic color names (primary, secondary, surface, muted) that can be
  * reused across different components without adding new properties.
  */
-export const CAMERA_THEMES: CameraTheme[] = [
+export const THEMES: Theme[] = [
   {
     name: "ACM Dark",
     primaryColor: "white",

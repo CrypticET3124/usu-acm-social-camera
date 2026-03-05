@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import type { OverlayProps } from "./types";
-import { useCameraTheme } from "./camera-theme";
+import { useTheme } from "../theme";
 
 export function Overlay({ preset }: OverlayProps) {
-  const theme = useCameraTheme();
+  const theme = useTheme();
   const hasTags = preset.tags && preset.tags.length > 0;
 
   return (

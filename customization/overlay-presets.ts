@@ -1,6 +1,6 @@
 import type { OverlayPreset } from "./types";
 
-export const BASIC_PRESETS: OverlayPreset[] = [
+export const OVERLAY_PRESETS: OverlayPreset[] = [
   {
     emoji: "🔥",
     caption: "My first social app",

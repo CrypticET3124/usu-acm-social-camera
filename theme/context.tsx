@@ -1,15 +1,15 @@
 import React, { createContext, useContext } from "react";
-import { CAMERA_THEMES } from "./themes";
-import { CameraTheme } from "./types";
+import { THEMES } from "./themes";
+import { Theme } from "./types";
 
-const defaultTheme = CAMERA_THEMES[0];
-const CameraThemeContext = createContext<CameraTheme>(defaultTheme);
+const defaultTheme = THEMES[0];
+const CameraThemeContext = createContext<Theme>(defaultTheme);
 
-export function CameraThemeProvider({
+export function ThemeProvider({
   value,
   children,
 }: {
-  value?: Partial<CameraTheme>;
+  value?: Partial<Theme>;
   children: React.ReactNode;
 }) {
   const merged = { ...defaultTheme, ...(value ?? {}) };
@@ -20,7 +20,7 @@ export function CameraThemeProvider({
   );
 }
 
-export function useCameraTheme(): CameraTheme {
+export function useTheme(): Theme {
   return useContext(CameraThemeContext);
 }
 

@@ -15,20 +15,3 @@ export type OverlayPreset = {
 export type OverlayProps = {
   preset: OverlayPreset;
 };
-
-/** Camera theme shared by overlays and stickers. */
-export type CameraTheme = {
-  name: string;
-  // Primary colors (main brand/accent)
-  primaryColor: string;
-  primaryTextColor: string;
-  // Secondary colors (supporting elements)
-  secondaryColor: string;
-  secondaryTextColor: string;
-  // Surface colors (backgrounds, cards)
-  surfaceColor: string;
-  surfaceTextColor: string;
-  // Muted colors (subtle elements)
-  mutedColor: string;
-  mutedTextColor: string;
-};
