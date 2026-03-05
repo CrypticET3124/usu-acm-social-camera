@@ -23,3 +23,14 @@ How many stars can you collect?
 ## Social Bonus ⭐⭐
 - Using Expo GO, try someone else's app and *steal one idea*
 - Show your app to two people, get a "feature request", and implement it
+
+# ACM Awards
+#### 🏆 **Pixel Perfect** - Best Overlay Design
+#### 🏆 **Dr. Frankenstein** - Most Chaotic Sticker
+#### 🏆 **Comedy Gold** - Funniest Feature
+#### 🏆 **Chaos Engine** - Most Cursed App
+#### 🏆 **Overengineered** - Most Unnecessarily Advanced Feature
+#### 🏆 **Code Angel** - Most Technically Impressive
+#### 🏆 **Starstruck** - Collected the most stars
+
+More awards pending!
