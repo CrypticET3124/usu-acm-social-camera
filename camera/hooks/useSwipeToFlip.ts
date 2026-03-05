@@ -41,3 +41,5 @@ export function useSwipeToFlip({
 
   return panResponder.panHandlers;
 }
+
+export type SwipeToFlipPanHandlers = ReturnType<typeof useSwipeToFlip>;

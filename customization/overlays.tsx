@@ -1,8 +1,8 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import type { OverlayPreset } from "../camera";
+import type { OverlayProps } from "./types";
 
-export function BasicOverlay({ preset }: { preset: OverlayPreset }) {
+export function BasicOverlay({ preset }: OverlayProps) {
   return (
     <View pointerEvents="none" style={styles.overlay}>
       <View style={styles.topRow}>
@@ -47,8 +47,6 @@ export function BasicOverlay({ preset }: { preset: OverlayPreset }) {
 const styles = StyleSheet.create({
   overlay: {
     ...StyleSheet.absoluteFillObject,
-    // paddingVertical: 32,
-    // paddingHorizontal: 18,
     justifyContent: "space-between",
   },
 

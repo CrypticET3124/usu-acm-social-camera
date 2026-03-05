@@ -14,7 +14,7 @@ function ReactionBadgeSticker({ size }: { size: number }) {
         },
       ]}
     >
-      <Text style={[styles.badgeEmoji, { fontSize: size * 0.35 }]}>🔥</Text>
+      <Text style={{ fontSize: size * 0.35 }}>🔥</Text>
       <Text style={[styles.badgeText, { fontSize: size * 0.22 }]}>
         Nice!
       </Text>
@@ -65,6 +65,5 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(0,0,0,0.55)",
     gap: 6,
   },
-  badgeEmoji: {},
   badgeText: { color: "white", fontWeight: "800", letterSpacing: 0.5 },
 });

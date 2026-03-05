@@ -12,13 +12,13 @@ import { CameraCapturedPicture } from "expo-camera";
 import { StickerLayer } from "../../stickers/";
 import type { StickerPack, useStickerRegistry } from "../../stickers";
 import { StickerPicker } from "./StickerPicker";
-import type { OverlayPreset } from "../types";
+import type { OverlayPreset, OverlayProps } from "../../customization";
 
 type Props = {
   image: CameraCapturedPicture;
   preset: OverlayPreset;
   stickerPack: StickerPack;
-  OverlayComponent: React.ComponentType<{ preset: OverlayPreset }>;
+  OverlayComponent: React.ComponentType<OverlayProps>;
   snapRef: React.RefObject<View | null>;
   stickerRegistry: ReturnType<typeof useStickerRegistry>;
   pickerOpen: boolean;

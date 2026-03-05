@@ -11,7 +11,8 @@ import { useCameraFacing } from "./hooks/useCameraFacing";
 import { useHintToast } from "./hooks/useHintToast";
 import { useSwipeToFlip } from "./hooks/useSwipeToFlip";
 import { useExportShare } from "./hooks/useExportShare";
-import type { OverlayPreset, Mode } from "./types";
+import type { OverlayPreset, OverlayProps } from "../customization";
+import type { Mode } from "./types";
 
 export function SocialCamera({
   presets,
@@ -21,7 +22,7 @@ export function SocialCamera({
 }: {
   presets: OverlayPreset[];
   stickerPack: StickerPack;
-  OverlayComponent: React.ComponentType<{ preset: OverlayPreset }>;
+  OverlayComponent: React.ComponentType<OverlayProps>;
   onFinish: () => void;
 }) {
   const { ready, loading } = useCameraReady(onFinish);

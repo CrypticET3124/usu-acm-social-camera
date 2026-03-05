@@ -1,4 +1,4 @@
-import type { OverlayPreset } from "../camera";
+import type { OverlayPreset } from "./types";
 
 export const BASIC_PRESETS: OverlayPreset[] = [
   { emoji: "🔥", caption: "My first social app", handle: "@usu_acm" },

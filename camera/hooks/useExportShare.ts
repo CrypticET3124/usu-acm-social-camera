@@ -46,12 +46,11 @@ export function useExportShare({ onFinish }: ExportShareOptions) {
       });
 
       onFinish();
-    } catch (e: any) {
+    } catch (e: unknown) {
+      const message =
+        e instanceof Error ? e.message : "Unknown error while exporting.";
       console.error("exportShare error:", e);
-      Alert.alert(
-        "Export failed",
-        e?.message ?? "Unknown error while exporting.",
-      );
+      Alert.alert("Export failed", message);
     } finally {
       setIsExporting(false);
     }

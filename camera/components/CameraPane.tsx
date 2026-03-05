@@ -9,15 +9,17 @@ import {
 import { CameraView } from "expo-camera";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
-import type { CameraDirection, OverlayPreset } from "../types";
+import type { SwipeToFlipPanHandlers } from "../hooks/useSwipeToFlip";
+import type { OverlayPreset, OverlayProps } from "../../customization";
+import type { CameraDirection } from "../types";
 import type { CameraView as CameraViewType } from "expo-camera";
 
 type Props = {
   cameraRef: React.RefObject<CameraViewType | null>;
   facing: CameraDirection;
   preset: OverlayPreset;
-  OverlayComponent: React.ComponentType<{ preset: OverlayPreset }>;
-  panHandlers: any;
+  OverlayComponent: React.ComponentType<OverlayProps>;
+  panHandlers: SwipeToFlipPanHandlers;
   showHint: boolean;
   onCapture: () => void;
   onClose: () => void;
