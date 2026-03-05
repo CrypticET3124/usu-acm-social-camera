@@ -1,4 +1,3 @@
-import { useMemo, useReducer, useRef } from "react";
 import {
   StickerInstance,
   StickerId,
@@ -6,7 +5,6 @@ import {
   StickerState,
   StickerPresent,
   Action,
-  PackId,
 } from "../types";
 import { v4 as uuidv4 } from "uuid";
 

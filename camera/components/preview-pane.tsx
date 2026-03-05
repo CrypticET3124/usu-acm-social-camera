@@ -11,7 +11,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { CameraCapturedPicture } from "expo-camera";
 import { StickerLayer } from "../../stickers/";
 import type { StickerPack, useStickerRegistry } from "../../stickers";
-import { StickerPicker } from "./StickerPicker";
+import { StickerPicker } from "./sticker-picker";
 import type { OverlayPreset, OverlayProps } from "../../customization";
 
 type Props = {

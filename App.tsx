@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { SocialCamera } from "./camera";
+import { Camerlay } from "./camera";
 import {
-  BasicOverlay,
+  Overlay,
   BASIC_PRESETS,
   BASIC_STICKER_PACK,
   CameraThemeProvider,
@@ -100,10 +100,10 @@ export default function App() {
               onCycleTheme={cycleTheme}
             />
           ) : (
-            <SocialCamera
+            <Camerlay
               presets={BASIC_PRESETS}
               stickerPack={BASIC_STICKER_PACK}
-              OverlayComponent={BasicOverlay}
+              OverlayComponent={Overlay}
               onFinish={() => setIsCameraOpen(false)}
             />
           )}

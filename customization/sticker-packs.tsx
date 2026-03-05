@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import type { StickerPack } from "../stickers";
-import { useCameraTheme } from "./CameraTheme";
+import { useCameraTheme } from "./camera-theme";
 
 // Component-based sticker. Copy this pattern to build more complex stickers.
 function ReactionBadgeSticker({ size }: { size: number }) {

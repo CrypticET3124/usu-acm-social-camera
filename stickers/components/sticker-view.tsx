@@ -3,8 +3,8 @@ import { StickerPack } from "../types";
 import { StyleSheet, Text } from "react-native";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { GestureDetector } from "react-native-gesture-handler";
-import { useSyncedStickerTransform } from "../hooks/useSyncedStickerTransform";
-import { useStickerGesture } from "../hooks/useStickerGesture";
+import { useSyncedStickerTransform } from "../hooks/use-synced-sticker-transform";
+import { useStickerGesture } from "../hooks/use-sticker-gesture";
 
 export default function StickerView({
   stickerId,

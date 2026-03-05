@@ -1,1 +1,1 @@
-export { SocialCamera } from "./screen";
+export { Camerlay } from "./camerlay";

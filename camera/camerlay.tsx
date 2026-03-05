@@ -2,19 +2,19 @@ import { StatusBar } from "expo-status-bar";
 import { useMemo, useRef, useState } from "react";
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 import { CameraCapturedPicture, CameraView } from "expo-camera";
-import { useCameraReady } from "./hooks/useCameraReady";
+import { useCameraReady } from "./hooks/use-camera-ready";
 import { useStickerRegistry } from "../stickers";
 import type { StickerPack } from "../stickers";
-import { CameraPane } from "./components/CameraPane";
-import { PreviewPane } from "./components/PreviewPane";
-import { useCameraFacing } from "./hooks/useCameraFacing";
-import { useHintToast } from "./hooks/useHintToast";
-import { useSwipeToFlip } from "./hooks/useSwipeToFlip";
-import { useExportShare } from "./hooks/useExportShare";
+import { CameraPane } from "./components/camera-pane";
+import { PreviewPane } from "./components/preview-pane";
+import { useCameraFacing } from "./hooks/use-camera-facing";
+import { useHintToast } from "./hooks/use-hint-toast";
+import { useSwipeToFlip } from "./hooks/use-swipe-to-flip";
+import { useExportShare } from "./hooks/use-export-share";
 import type { OverlayPreset, OverlayProps } from "../customization";
 import type { Mode } from "./types";
 
-export function SocialCamera({
+export function Camerlay({
   presets,
   stickerPack,
   OverlayComponent,
