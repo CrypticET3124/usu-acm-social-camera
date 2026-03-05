@@ -40,7 +40,7 @@ export function Default({ preset }: OverlayProps) {
                 {preset.handle}
               </Text>
               <Text style={[styles.subtext, { color: theme.mutedTextColor }]}>
-                Captured with Camerlay
+                Captured with USU ACM Social Camera
               </Text>
             </View>
 

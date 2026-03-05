@@ -4,8 +4,8 @@ A modular Expo/React Native app that lets users take a photo, apply an overlay, 
 
 ## Structure
 
-- **`/camerlay`** — Camera engine (screen orchestrator, panes, hooks, types)
-  - **`/overlays`** — Workshop overlay components and presets (see `camerlay/overlays/README.md`)
+- **`/social-camera`** — Camera engine (screen orchestrator, panes, hooks, types)
+  - **`/overlays`** — Workshop overlay components and presets (see `social-camera/overlays/README.md`)
 - **`/sticker-engine`** — Sticker state machine and rendering (registry, hooks, components, types)
   - **`/packs`** — Workshop sticker pack definitions and custom stickers (see `sticker-engine/packs/README.md`)
 - **`/theme`** — Shared theming system (provider, types, theme definitions)
@@ -21,8 +21,8 @@ A modular Expo/React Native app that lets users take a photo, apply an overlay, 
 ## Customizing (workshop quickstart)
 Compete by winning stars in CHALLENGES.md
 
-- **Change overlay text/content**: edit `camerlay/overlays/presets.ts`
-- **Change overlay visuals**: tweak or replace `Default` in `camerlay/overlays/components/default.tsx`
+- **Change overlay text/content**: edit `social-camera/overlays/presets.ts`
+- **Change overlay visuals**: tweak or replace `Default` in `social-camera/overlays/components/default.tsx`
 - **Add stickers**: update `sticker-engine/packs/default.tsx`
 - **Change themes**: edit `theme/themes.ts` to add or modify color themes
 - Everything re-exports via barrel files (`index.ts`) for simple imports
@@ -44,7 +44,7 @@ Compete by winning stars in CHALLENGES.md
 
 ## Contributing checklist
 
-- Keep camera logic in `camerlay/hooks` and UI in `camerlay/components`
+- Keep camera logic in `social-camera/hooks` and UI in `social-camera/components`
 - Keep sticker engine logic separate from sticker pack content
-- Expose workshop customizations through `camerlay/overlays` and `sticker-engine/packs`
+- Expose workshop customizations through `social-camera/overlays` and `sticker-engine/packs`
 - Use semantic theme colors from `theme/` for all styling (avoid hardcoded colors)

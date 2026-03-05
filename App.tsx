@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Camerlay } from "./camerlay";
-import { OVERLAYS, OVERLAY_PRESETS } from "./camerlay";
+import { CameraScreen } from "./social-camera";
+import { OVERLAYS, OVERLAY_PRESETS } from "./social-camera";
 import { STICKER_PACKS } from "./sticker-engine";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider, THEMES, useTheme } from "./theme";
@@ -95,7 +95,7 @@ export default function App() {
               onCycleTheme={cycleTheme}
             />
           ) : (
-            <Camerlay
+            <CameraScreen
               presets={OVERLAY_PRESETS}
               stickerPack={STICKER_PACKS.default}
               OverlayComponent={OVERLAYS.default}

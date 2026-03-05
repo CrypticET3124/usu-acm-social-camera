@@ -12,7 +12,7 @@ export const OVERLAY_PRESETS: OverlayPreset[] = [
     emoji: "😂",
     caption: "Built this in 1 hour",
     handle: "@spencerls_",
-    tags: ["camerlay"],
+    tags: ["social-camera", "ACM"],
     brandName: "USU ACM",
   },
   {

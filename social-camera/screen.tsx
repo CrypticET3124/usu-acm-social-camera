@@ -14,7 +14,7 @@ import { useExportShare } from "./hooks/use-export-share";
 import type { OverlayPreset, OverlayProps } from "./overlays";
 import type { Mode } from "./types";
 
-export function Camerlay({
+export function CameraScreen({
   presets,
   stickerPack,
   OverlayComponent,
