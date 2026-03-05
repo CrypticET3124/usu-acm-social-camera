@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import type { OverlayProps } from "../types";
-import { useTheme } from "../../theme";
+import { useTheme } from "../../../theme";
 
 export function Default({ preset }: OverlayProps) {
   const theme = useTheme();
@@ -73,7 +73,7 @@ export function Default({ preset }: OverlayProps) {
             {preset.brandName || "USU ACM"}
           </Text>
           <Image
-            source={require("../../assets/adaptive-icon.png")}
+            source={require("../../../assets/adaptive-icon.png")}
             style={styles.brandIcon}
           />
         </View>

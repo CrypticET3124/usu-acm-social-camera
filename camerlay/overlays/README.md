@@ -42,5 +42,5 @@ This folder contains overlay components and presets for the social camera app. S
 ## Dependencies
 
 - Overlay and preset types are defined in **types.ts** (this folder).
-- Theme values come from **`../theme/`** and flow through `ThemeProvider` → `useTheme()` → overlay components.
-- Image assets (e.g. for overlays) can use `require("../assets/...")` to reference the project's `assets/` folder.
+- Theme values come from **`../../theme/`** and flow through `ThemeProvider` → `useTheme()` → overlay components.
+- Image assets (e.g. for overlays) can use `require("../../../assets/...")` to reference the project's `assets/` folder.

@@ -10,7 +10,7 @@ import { CameraView } from "expo-camera";
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import type { SwipeToFlipPanHandlers } from "../../camera/hooks/use-swipe-to-flip";
-import type { OverlayPreset, OverlayProps } from "../../overlays";
+import type { OverlayPreset, OverlayProps } from "../overlays";
 import type { CameraDirection } from "../types";
 import type { CameraView as CameraViewType } from "expo-camera";
 

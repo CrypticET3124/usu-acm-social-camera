@@ -11,7 +11,7 @@ import { useCameraFacing } from "./hooks/use-camera-facing";
 import { useHintToast } from "./hooks/use-hint-toast";
 import { useSwipeToFlip } from "./hooks/use-swipe-to-flip";
 import { useExportShare } from "./hooks/use-export-share";
-import type { OverlayPreset, OverlayProps } from "../overlays";
+import type { OverlayPreset, OverlayProps } from "./overlays";
 import type { Mode } from "./types";
 
 export function Camerlay({

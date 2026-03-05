@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { Camerlay } from "./camerlay";
-import { OVERLAYS, OVERLAY_PRESETS } from "./overlays";
+import { OVERLAYS, OVERLAY_PRESETS } from "./camerlay";
 import { STICKER_PACKS } from "./sticker-engine";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { ThemeProvider, THEMES, useTheme } from "./theme";

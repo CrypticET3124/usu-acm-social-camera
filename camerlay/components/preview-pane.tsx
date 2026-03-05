@@ -13,7 +13,7 @@ import { StickerLayer } from "../../sticker-engine";
 import type { StickerPack } from "../../sticker-engine";
 import type { useStickerRegistry } from "../../sticker-engine";
 import { StickerPicker } from "./sticker-picker";
-import type { OverlayPreset, OverlayProps } from "../../overlays";
+import type { OverlayPreset, OverlayProps } from "../overlays";
 
 type Props = {
   image: CameraCapturedPicture;
