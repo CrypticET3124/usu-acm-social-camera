@@ -9,8 +9,9 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import { CameraCapturedPicture } from "expo-camera";
-import { StickerLayer } from "../../stickers/";
-import type { StickerPack, useStickerRegistry } from "../../stickers";
+import { StickerLayer } from "../../sticker-engine";
+import type { StickerPack } from "../../sticker-engine";
+import type { useStickerRegistry } from "../../sticker-engine";
 import { StickerPicker } from "./sticker-picker";
 import type { OverlayPreset, OverlayProps } from "../../overlays";
 

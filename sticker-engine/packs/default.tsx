@@ -1,5 +1,5 @@
 import { Image, Text } from "react-native";
-import { StickerPack } from "../../stickers";
+import { StickerPack } from "./types";
 import { LikeButton, ReactionBadge } from "./stickers";
 
 export const DEFAULT: StickerPack = {

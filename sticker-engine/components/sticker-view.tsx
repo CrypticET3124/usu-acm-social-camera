@@ -1,5 +1,5 @@
 import { StickerRegistry } from "../registry";
-import { StickerPack } from "../types";
+import { StickerPack } from "../packs";
 import { StyleSheet, Text } from "react-native";
 import Animated, { useAnimatedStyle } from "react-native-reanimated";
 import { GestureDetector } from "react-native-gesture-handler";

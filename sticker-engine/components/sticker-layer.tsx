@@ -1,8 +1,8 @@
 import { View, StyleSheet } from "react-native";
 import { useState } from "react";
 import { StickerRegistry } from "../registry";
-import { StickerPack } from "../types";
-import StickerView from "../components/sticker-view";
+import { StickerPack } from "../packs";
+import StickerView from "./sticker-view";
 import { TrashZone } from "./trash-zone";
 
 export function StickerLayer({

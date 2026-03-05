@@ -1,13 +1,13 @@
 import { useCallback, useMemo, useReducer } from "react";
 import { initialState, reducer } from "./internal";
-import { PackId, StickerId, StickerTransform } from "../types";
+import { StickerId, StickerTransform, PackName } from "../types";
 
 export function useStickerRegistry() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const actions = useMemo(() => {
     return {
-      add(packId: PackId, initialTransform?: Partial<StickerTransform>) {
+      add(packId: PackName, initialTransform?: Partial<StickerTransform>) {
         dispatch({ type: "ADD", packId, initialTransform });
       },
       select(id: StickerId | null) {

@@ -1,5 +1,5 @@
 import { Pressable, StyleSheet, View, TouchableOpacity } from "react-native";
-import type { StickerPack } from "../../stickers";
+import type { StickerPack } from "../../sticker-engine";
 
 type Props = {
   visible: boolean;

@@ -1,7 +1,5 @@
-import { JSX } from "react";
-
 export type StickerId = string;
-export type PackId = string;
+export type PackName = string;
 
 export type StickerTransform = {
   x: number;
@@ -12,18 +10,10 @@ export type StickerTransform = {
 
 export type StickerInstance = {
   id: StickerId;
-  packId: PackId;
+  packId: PackName;
   transform: StickerTransform;
   z: number;
 };
-
-export type StickerPackRenderProps = {
-  size: number;
-};
-
-export type StickerDefinition = (props: StickerPackRenderProps) => JSX.Element;
-
-export type StickerPack = Record<PackId, StickerDefinition>;
 
 export type StickerPresent = {
   byId: Record<StickerId, StickerInstance>;
@@ -39,7 +29,7 @@ export type StickerState = StickerPresent & {
 export type Action =
   | {
       type: "ADD";
-      packId: PackId;
+      packId: PackName;
       initialTransform?: Partial<StickerTransform>;
     }
   | {
