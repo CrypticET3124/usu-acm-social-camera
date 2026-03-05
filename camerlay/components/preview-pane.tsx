@@ -12,7 +12,7 @@ import { CameraCapturedPicture } from "expo-camera";
 import { StickerLayer } from "../../stickers/";
 import type { StickerPack, useStickerRegistry } from "../../stickers";
 import { StickerPicker } from "./sticker-picker";
-import type { OverlayPreset, OverlayProps } from "../../customization";
+import type { OverlayPreset, OverlayProps } from "../../overlays";
 
 type Props = {
   image: CameraCapturedPicture;
