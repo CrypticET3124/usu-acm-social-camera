@@ -1,39 +1,77 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import type { OverlayProps } from "./types";
+import { useCameraTheme } from "./CameraTheme";
 
 export function BasicOverlay({ preset }: OverlayProps) {
+  const theme = useCameraTheme();
+  const hasTags = preset.tags && preset.tags.length > 0;
+
   return (
-    <View pointerEvents="none" style={styles.overlay}>
-      <View style={styles.topRow}>
+    <View pointerEvents="box-none" style={styles.overlay}>
+      <View style={styles.topRow} pointerEvents="none">
         <LinearGradient
-          colors={["rgba(5,5,5,0.9)", "transparent"]}
+          colors={[theme.surfaceColor, "transparent"]}
           start={{ x: 0, y: 0 }}
           end={{ x: 0, y: 1 }}
           style={styles.card}
         >
-          <Text style={styles.caption}>{preset.caption}</Text>
+          <Text style={[styles.caption, { color: theme.primaryTextColor }]}>
+            {preset.caption}
+          </Text>
+
           <View style={styles.cardHeader}>
 
-            <View style={styles.avatar}>
-              <Text style={styles.avatarText}>
+            <View
+              style={[styles.avatar, { backgroundColor: theme.secondaryColor }]}
+            >
+              <Text
+                style={[
+                  styles.avatarText,
+                  { color: theme.secondaryTextColor },
+                ]}
+              >
                 {preset.handle.replace("@", "").charAt(0).toUpperCase() || "@"}
               </Text>
             </View>
 
             <View style={styles.headerText}>
-              <Text style={styles.handle}>{preset.handle}</Text>
-              <Text style={styles.subtext}>Captured with Camerlay</Text>
+              <Text style={[styles.handle, { color: theme.primaryTextColor }]}>
+                {preset.handle}
+              </Text>
+              <Text style={[styles.subtext, { color: theme.mutedTextColor }]}>
+                Captured with Camerlay
+              </Text>
             </View>
 
             <Text style={styles.emoji}>{preset.emoji}</Text>
           </View>
+          {hasTags && (
+            <View style={styles.tagsRow} pointerEvents="none">
+              {preset.tags?.map((tag) => (
+                <View
+                  key={tag}
+                  style={[styles.tag, { backgroundColor: theme.mutedColor }]}
+                >
+                  <Text style={[styles.tagText, { color: theme.surfaceTextColor }]}>
+                    #{tag}
+                  </Text>
+                </View>
+              ))}
+            </View>
+          )}
         </LinearGradient>
       </View>
 
-      <View style={styles.bottomRow}>
-        <View style={styles.brandPill}>
-          <Text style={styles.brandText}>USU ACM</Text>
+      <View style={styles.bottomRow} pointerEvents="none">
+        <View
+          style={[styles.brandPill, { backgroundColor: theme.surfaceColor }]}
+        >
+          <Text
+            style={[styles.brandText, { color: theme.surfaceTextColor }]}
+          >
+            {preset.brandName || "USU ACM"}
+          </Text>
           <Image
             source={require("../assets/adaptive-icon.png")}
             style={styles.brandIcon}
@@ -77,7 +115,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    marginBottom: 6,
   },
 
   headerText: {
@@ -89,16 +126,28 @@ const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: "rgba(155,155,155,1)",
     alignItems: "center",
     justifyContent: "center",
   },
-  avatarText: { color: "white", fontWeight: "800" },
+  avatarText: { fontWeight: "800" },
 
-  handle: { color: "white", fontWeight: "800", fontSize: 15 },
-  subtext: { color: "rgba(230,230,230,1)", fontSize: 12 },
+  handle: { fontWeight: "800", fontSize: 15 },
+  subtext: { fontSize: 12 },
   emoji: { fontSize: 24, marginLeft: 12 },
-  caption: { color: "white", fontSize: 18, fontWeight: "700" },
+  caption: { fontSize: 18, fontWeight: "700" },
+  captionPressed: { opacity: 0.8 },
+  tagsRow: {
+    flexDirection: "row-reverse",
+    flexWrap: "wrap",
+    gap: 6,
+    marginTop: 4,
+  },
+  tag: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 999,
+  },
+  tagText: { fontSize: 12, fontWeight: "600" },
 
   brandPill: {
     flexDirection: "row",
@@ -106,11 +155,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     paddingVertical: 6,
     borderRadius: 999,
-    backgroundColor: "rgba(0,0,0,0.5)",
   },
   brandIcon: { width: 30, height: 30, marginLeft: 6 },
   brandText: {
-    color: "#FFFA",
     fontSize: 14,
     fontWeight: "800",
     letterSpacing: 0.8,

@@ -1,9 +1,11 @@
-import { View, Text, StyleSheet, Image } from "react-native";
+import { useState } from "react";
+import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import type { StickerPack } from "../stickers";
+import { useCameraTheme } from "./CameraTheme";
 
-// Example of a component-based sticker.
-// Students can copy this pattern to build more complex stickers.
+// Component-based sticker. Copy this pattern to build more complex stickers.
 function ReactionBadgeSticker({ size }: { size: number }) {
+  const theme = useCameraTheme();
   return (
     <View
       style={[
@@ -11,14 +13,42 @@ function ReactionBadgeSticker({ size }: { size: number }) {
         {
           paddingHorizontal: size * 0.25,
           paddingVertical: size * 0.18,
+          backgroundColor: theme.surfaceColor,
+          borderWidth: 1.5,
+          borderColor: theme.primaryColor,
         },
       ]}
     >
       <Text style={{ fontSize: size * 0.35 }}>🔥</Text>
-      <Text style={[styles.badgeText, { fontSize: size * 0.22 }]}>
+      <Text
+        style={[
+          styles.badgeText,
+          { fontSize: size * 0.22, color: theme.primaryTextColor },
+        ]}
+      >
         Nice!
       </Text>
     </View>
+  );
+}
+
+// Stateful sticker: uses useState. Teaches local state in a component.
+function LikeButtonSticker({ size }: { size: number }) {
+  const [liked, setLiked] = useState(false);
+  return (
+    <Pressable
+      onPress={() => setLiked(!liked)}
+      style={({ pressed }) => [
+        styles.likeWrap,
+        { width: size, height: size, opacity: pressed ? 0.8 : 1 },
+      ]}
+      accessibilityLabel={liked ? "Liked" : "Like"}
+      accessibilityRole="button"
+    >
+      <Text style={{ fontSize: size * 0.6, textAlign: "center" }}>
+        {liked ? "❤️" : "🤍"}
+      </Text>
+    </Pressable>
   );
 }
 
@@ -31,13 +61,9 @@ export const BASIC_STICKER_PACK: StickerPack = {
     />
   ),
 
-  // Text-based sticker examples
+  // Text/Emoji-based sticker examples
   flame: ({ size }) => (
     <Text style={[styles.text, { fontSize: size * 0.5 }]}>🔥</Text>
-  ),
-
-  heart: ({ size }) => (
-    <Text style={{ fontSize: size * 0.7, textAlign: "center" }}>❤️</Text>
   ),
 
   camera: ({ size }) => (
@@ -50,6 +76,9 @@ export const BASIC_STICKER_PACK: StickerPack = {
 
   // Component-based sticker example
   reactionBadge: ({ size }) => <ReactionBadgeSticker size={size} />,
+
+  // Stateful sticker: teaches useState
+  likeButton: ({ size }) => <LikeButtonSticker size={size} />,
 };
 
 const styles = StyleSheet.create({
@@ -62,8 +91,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 999,
-    backgroundColor: "rgba(0,0,0,0.55)",
     gap: 6,
   },
-  badgeText: { color: "white", fontWeight: "800", letterSpacing: 0.5 },
+  badgeText: { fontWeight: "800", letterSpacing: 0.5 },
+
+  likeWrap: {
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

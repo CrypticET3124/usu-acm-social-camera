@@ -1,14 +1,34 @@
 /**
  * Overlay preset data passed into your overlay component.
  * Edit overlay-presets.ts to change the list; edit overlays.tsx to change how it looks.
+ * Optional `tags` lets you practice list rendering with .map() and keys.
  */
 export type OverlayPreset = {
   emoji: string;
   caption: string;
   handle: string;
+  tags?: string[];
+  brandName?: string;
 };
 
 /** Props your overlay component receives from the camera screen. */
 export type OverlayProps = {
   preset: OverlayPreset;
+};
+
+/** Camera theme shared by overlays and stickers. */
+export type CameraTheme = {
+  name: string;
+  // Primary colors (main brand/accent)
+  primaryColor: string;
+  primaryTextColor: string;
+  // Secondary colors (supporting elements)
+  secondaryColor: string;
+  secondaryTextColor: string;
+  // Surface colors (backgrounds, cards)
+  surfaceColor: string;
+  surfaceTextColor: string;
+  // Muted colors (subtle elements)
+  mutedColor: string;
+  mutedTextColor: string;
 };

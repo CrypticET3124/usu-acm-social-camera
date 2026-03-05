@@ -21,7 +21,9 @@ export function StickerPicker({ visible, pack, onSelect, onClose }: Props) {
             style={styles.item}
             onPress={() => onSelect(id as keyof StickerPack)}
           >
-            <Render size={52} />
+            <View style={styles.stickerContainer} pointerEvents="none">
+              <Render size={52}/>
+            </View>
           </TouchableOpacity>
         ))}
       </View>
@@ -55,5 +57,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     margin: 6,
     padding: 6,
+  },
+  stickerContainer: {
+    width: "100%",
+    height: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
