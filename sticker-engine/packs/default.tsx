@@ -1,4 +1,4 @@
-import { Image, Text } from "react-native";
+import { Image, Text, StyleSheet } from "react-native";
 import { StickerPack } from "./types";
 import { LikeButton, ReactionBadge } from "./stickers";
 
@@ -8,6 +8,17 @@ export const DEFAULT: StickerPack = {
     <Image
       source={require("../../assets/adaptive-icon.png")}
       style={{ width: size, height: size, resizeMode: "contain" }}
+    />
+  ),
+
+  minion: ({ size }) => (
+    <Image
+      source={require("../../assets/minion.png")}
+      style={{
+        width: size,
+        height: size,
+        resizeMode: "contain",
+      }}
     />
   ),
 

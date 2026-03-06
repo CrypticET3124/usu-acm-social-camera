@@ -15,10 +15,11 @@ A modular Expo/React Native app that lets users take a photo, apply an overlay, 
 ## Getting started
 
 1. Install deps: `npm install` (or `pnpm install` / `yarn install`)
-2. Run the app: `npm run start` and use Expo Go or an emulator/simulator (Note: if there are problems with the network use `npm run start --tunnel`)
+2. Run the app: `npm run dev` and use Expo Go or an emulator/simulator (Note: if there are problems with the network use `npm run dev:tunnel`)
 3. Open `App.tsx` to swap overlays/sticker packs
 
 ## Customizing (workshop quickstart)
+
 Compete by winning stars in CHALLENGES.md
 
 - **Change overlay text/content**: edit `social-camera/overlays/presets.ts`

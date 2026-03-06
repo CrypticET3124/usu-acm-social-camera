@@ -4,7 +4,7 @@ import type { Theme } from "./types";
  * Available camera themes for the app.
  * Students can add new themes here to learn about theming and how theme values
  * affect overlays and stickers throughout the app.
- * 
+ *
  * Themes use semantic color names (primary, secondary, surface, muted) that can be
  * reused across different components without adding new properties.
  */
