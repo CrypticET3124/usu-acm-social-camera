@@ -1,12 +1,26 @@
 import { Image, Text } from "react-native";
 import { StickerPack } from "./types";
-import { LikeButton, ReactionBadge } from "./stickers";
+import { LikeButton, ReactionBadge, ZombieButton } from "./stickers";
 
 export const DEFAULT: StickerPack = {
   // Image-based sticker example
   usuAcm: ({ size }) => (
     <Image
       source={require("../../assets/adaptive-icon.png")}
+      style={{ width: size, height: size, resizeMode: "contain" }}
+    />
+  ),
+
+  titanfall: ({ size }) => (
+    <Image
+      source={require("../../assets/1914-Titanfall.png")}
+      style={{ width: size, height: size, resizeMode: "contain" }}
+    />
+  ),
+
+  zombie: ({ size }) => (
+    <Image
+      source={require("../../assets/Zombatar_1.jpg")}
       style={{ width: size, height: size, resizeMode: "contain" }}
     />
   ),
@@ -29,4 +43,6 @@ export const DEFAULT: StickerPack = {
 
   // Stateful sticker: teaches useState
   likeButton: ({ size }) => <LikeButton size={size} />,
+
+  zombieButton: ({ size }) => <ZombieButton size={size} />,
 };
